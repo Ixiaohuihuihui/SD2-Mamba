@@ -1,0 +1,180 @@
+Metadata-Version: 2.4
+Name: ultralytics
+Version: 8.2.29
+Summary: Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification.
+Author: Glenn Jocher, Ayush Chaurasia, Jing Qiu
+Maintainer: Glenn Jocher, Ayush Chaurasia, Jing Qiu
+License: AGPL-3.0
+Project-URL: Bug Reports, https://github.com/ultralytics/ultralytics/issues
+Project-URL: Funding, https://ultralytics.com
+Project-URL: Source, https://github.com/ultralytics/ultralytics/
+Keywords: machine-learning,deep-learning,computer-vision,ML,DL,AI,YOLO,YOLOv3,YOLOv5,YOLOv8,HUB,Ultralytics
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: matplotlib>=3.3.0
+Requires-Dist: opencv-python>=4.6.0
+Requires-Dist: pillow>=7.1.2
+Requires-Dist: pyyaml>=5.3.1
+Requires-Dist: requests>=2.23.0
+Requires-Dist: scipy>=1.4.1
+Requires-Dist: torch>=1.8.0
+Requires-Dist: torchvision>=0.9.0
+Requires-Dist: tqdm>=4.64.0
+Requires-Dist: psutil
+Requires-Dist: py-cpuinfo
+Requires-Dist: pandas>=1.1.4
+Requires-Dist: seaborn>=0.11.0
+Requires-Dist: ultralytics-thop>=0.2.5
+Provides-Extra: dev
+Requires-Dist: ipython; extra == "dev"
+Requires-Dist: check-manifest; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: coverage[toml]; extra == "dev"
+Requires-Dist: mkdocs>=1.6.0; extra == "dev"
+Requires-Dist: mkdocs-material>=9.5.9; extra == "dev"
+Requires-Dist: mkdocstrings[python]; extra == "dev"
+Requires-Dist: mkdocs-jupyter; extra == "dev"
+Requires-Dist: mkdocs-redirects; extra == "dev"
+Requires-Dist: mkdocs-ultralytics-plugin>=0.0.45; extra == "dev"
+Provides-Extra: export
+Requires-Dist: onnx>=1.12.0; extra == "export"
+Requires-Dist: coremltools>=7.0; (platform_system != "Windows" and python_version <= "3.11") and extra == "export"
+Requires-Dist: openvino>=2024.0.0; extra == "export"
+Requires-Dist: tensorflow>=2.0.0; extra == "export"
+Requires-Dist: tensorflowjs>=3.9.0; extra == "export"
+Requires-Dist: keras; extra == "export"
+Requires-Dist: flatbuffers<100,>=23.5.26; platform_machine == "aarch64" and extra == "export"
+Requires-Dist: numpy==1.23.5; platform_machine == "aarch64" and extra == "export"
+Requires-Dist: h5py!=3.11.0; platform_machine == "aarch64" and extra == "export"
+Provides-Extra: explorer
+Requires-Dist: lancedb; extra == "explorer"
+Requires-Dist: duckdb<=0.9.2; extra == "explorer"
+Requires-Dist: streamlit; extra == "explorer"
+Provides-Extra: logging
+Requires-Dist: comet; extra == "logging"
+Requires-Dist: tensorboard>=2.13.0; extra == "logging"
+Requires-Dist: dvclive>=2.12.0; extra == "logging"
+Provides-Extra: extra
+Requires-Dist: hub-sdk>=0.0.5; extra == "extra"
+Requires-Dist: ipython; extra == "extra"
+Requires-Dist: albumentations>=1.4.6; extra == "extra"
+Requires-Dist: pycocotools>=2.0.7; extra == "extra"
+Dynamic: license-file
+
+# [AAAI2025] Mamba YOLO: A Simple Baseline for Object Detection with State Space Model
+
+![Python 3.11](https://img.shields.io/badge/python-3.11-g) ![pytorch 2.3.0](https://img.shields.io/badge/pytorch-2.3.0-blue.svg) [![docs](https://img.shields.io/badge/docs-latest-blue)](README.md)
+
+
+<div align="center">
+  <img src="./asserts/mambayolo.jpg" width="1200px"/>
+</div>
+
+## Model Zoo
+
+We've pre-trained YOLO-World-T/M/L from scratch and evaluate on the `MSCOCO2017 val`. 
+
+### Inference on MSCOCO2017 dataset
+
+
+| model | Params| FLOPs | ${AP}^{val}$ | ${AP}_{{50}}^{val}$ | ${AP}_{{75}}^{val}$ | ${AP}_{{S}}^{val}$ | ${AP}_{{M}}^{val}$ | ${AP}_{{L}}^{val}$ |
+| :------------------------------------------------------------------------------------------------------------------- | :------------------- | :----------------- | :--------------: | :------------: | :------------: | :------------: | :-------------: | :------------: |
+| [Mamba YOLO-T](./ultralytics/cfg/models/mamba-yolo/Mamba-YOLO-T.yaml) | 5.8M | 13.2G |       44.5       |          61.2           |          48.2           |          24.7          |          48.8          |          62.0          |
+| [Mamba YOLO-M](./ultralytics/cfg/models/mamba-yolo/Mamba-YOLO-B.yaml) | 19.1M | 45.4G  |       49.1       |          66.5           |          53.5           |          30.6          |          54.0          |          66.4          |
+| [Mamba YOLO-L](./ultralytics/cfg/models/mamba-yolo/Mamba-YOLO-L.yaml)  | 57.6M | 156.2G |       52.1       |          69.8           |          56.5           |          34.1          |          57.3          |          68.1          |
+
+
+
+
+## Getting started
+
+### 1. Installation
+
+Mamba YOLO is developed based on `torch==2.3.0` `pytorch-cuda==12.1` and `CUDA Version==12.6`. 
+
+#### 2.Clone Project 
+
+```bash
+git clone https://github.com/HZAI-ZJNU/Mamba-YOLO.git
+```
+
+#### 3.Create and activate a conda environment.
+```bash
+conda create -n mambayolo -y python=3.11
+conda activate mambayolo
+```
+
+#### 4. Install torch
+
+```bash
+pip3 install torch===2.3.0 torchvision torchaudio
+```
+
+#### 5. Install Dependencies
+```bash
+pip install seaborn thop timm einops
+cd selective_scan && pip install . && cd ..
+pip install -v -e .
+```
+
+#### 6. Prepare MSCOCO2017 Dataset
+Make sure your dataset structure as follows:
+```
+├── coco
+│   ├── annotations
+│   │   ├── instances_train2017.json
+│   │   └── instances_val2017.json
+│   ├── images
+│   │   ├── train2017
+│   │   └── val2017
+│   ├── labels
+│   │   ├── train2017
+│   │   ├── val2017
+```
+
+#### 7. Training Mamba-YOLO-T
+```bash
+python mbyolo_train.py --task train --data ultralytics/cfg/datasets/coco.yaml \
+ --config ultralytics/cfg/models/mamba-yolo/Mamba-YOLO-T.yaml \
+--amp  --project ./output_dir/mscoco --name mambayolo_n
+```
+
+## Acknowledgement
+
+This repo is modified from open source real-time object detection codebase [Ultralytics](https://github.com/ultralytics/ultralytics). The selective-scan from [VMamba](https://github.com/MzeroMiko/VMamba).
+
+## Citations
+If you find [Mamba-YOLO](https://github.com/HZAI-ZJNU/Mamba-YOLO) is useful in your research or applications, please consider giving us a star 🌟 and citing it.
+
+```bibtex
+@misc{wang2024mambayolossmsbasedyolo,
+      title={Mamba YOLO: SSMs-Based YOLO For Object Detection}, 
+      author={Zeyu Wang and Chen Li and Huiying Xu and Xinzhong Zhu},
+      year={2024},
+      eprint={2406.05835},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2406.05835}, 
+}
+```

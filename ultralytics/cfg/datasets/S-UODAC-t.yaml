@@ -1,0 +1,11 @@
+path: /Home/cr/Data/S-UODAC-yolo   
+train: images/test    
+val: images/test     
+test: images/test    
+
+nc: 4
+names:
+  0: echinus
+  1: starfish
+  2: holothurian
+  3: scallop
