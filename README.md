@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains the code for our paper `SD2-Mamba: Semantic-Density-Driven Mamba for Robust Domain Generalization Underwater Object Detection`
+This repository contains the code for our paper `SD2-Mamba: Semantic-Density-Driven Mamba for Robust Domain Generalization Underwater Object Detection` (ICASSP 2026)
 
 Domain generalization for object detection aims to enhance detectors’ performance in unseen scenarios. Many existing methods for domain generalization in underwater object detection fail to
 effectively separate foreground objects from noisy backgrounds, as they overlook semantic density cues crucial for distinguishing salient structures under severe visual degradation. In this paper,
@@ -12,6 +12,8 @@ and background, the Density-aware Sequence Modulation (DSM) mechanism is propose
 regions while suppressing noisy background. Finally, we introduce Semantically Enhanced Instance Normalization (SE-IN) to recalibrate feature maps at both spatial and channel levels, enhancing
 foreground saliency. Extensive experiments on the SUODAC2020 dataset demonstrate that SD2-Mamba achieves state-of-the-art performance, with an average mAP50 of 63.9%, while being highly
 efficient with only 6.9M parameters and 147.1 FPS. It outperforms existing domain generalization methods in both accuracy and speed.
+<img width="631" height="374" alt="image" src="https://github.com/user-attachments/assets/55cc4786-417e-4e08-8126-066c199c1e36" />
+<img width="687" height="184" alt="image" src="https://github.com/user-attachments/assets/b80e6011-64c9-40b1-81bc-9e99b7622abc" />
 
 
 ## Getting started
